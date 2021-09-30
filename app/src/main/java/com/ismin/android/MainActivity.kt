@@ -8,18 +8,24 @@ import android.widget.Button
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.simpleName
 
-    private val bookshelf = Bookshelf();
+    private val bookshelf = Bookshelf()
+    private val adapter = BookAdapter(bookshelf.getAllBooks())
 
     private val startForResult = registerForActivityResult(StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             val book = result.data?.getSerializableExtra(BOOK_TO_CREATE_KEY) as Book
             bookshelf.addBook(book);
             Log.d(TAG, "Number of books:" + bookshelf.getTotalNumberOfBooks())
+
+            adapter.refreshData(bookshelf.getAllBooks())
+            adapter.notifyDataSetChanged();
         }
     }
 
@@ -33,5 +39,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CreateBookActivity::class.java)
             startForResult.launch(intent)
         }
+
+        val rcvBooks = findViewById<RecyclerView>(R.id.a_main_rcv_books)
+        rcvBooks.layoutManager = LinearLayoutManager(this)
+        rcvBooks.adapter = adapter
     }
 }
