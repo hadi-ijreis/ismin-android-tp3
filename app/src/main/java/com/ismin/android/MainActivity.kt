@@ -3,18 +3,23 @@ package com.ismin.android
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
+    private val TAG = MainActivity::class.java.simpleName
+
+    private val bookshelf = Bookshelf();
+
     private val startForResult = registerForActivityResult(StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             val book = result.data?.getSerializableExtra(BOOK_TO_CREATE_KEY) as Book
-            Toast.makeText(baseContext, book.toString(), Toast.LENGTH_LONG).show()
+            bookshelf.addBook(book);
+            Log.d(TAG, "Number of books:" + bookshelf.getTotalNumberOfBooks())
         }
     }
 
