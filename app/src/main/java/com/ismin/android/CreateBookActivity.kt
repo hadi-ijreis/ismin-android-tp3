@@ -3,8 +3,8 @@ package com.ismin.android
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 
 const val BOOK_TO_CREATE_KEY = "BOOK_TO_CREATE_KEY"
 
@@ -20,9 +20,9 @@ class CreateBookActivity : AppCompatActivity() {
     }
 
     private fun saveBook() {
-        val author = findViewById<EditText>(R.id.a_create_book_edt_author).text.toString()
-        val title = findViewById<EditText>(R.id.a_create_book_edt_title).text.toString()
-        val date = findViewById<EditText>(R.id.a_create_book_edt_date).text.toString()
+        val author = findViewById<TextInputEditText>(R.id.a_create_book_edt_author).text.toString()
+        val title = findViewById<TextInputEditText>(R.id.a_create_book_edt_title).text.toString()
+        val date = findViewById<TextInputEditText>(R.id.a_create_book_edt_date).text.toString()
         val book = Book(title, author, date);
 
         val returnIntent = Intent()

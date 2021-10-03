@@ -16,35 +16,51 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="end"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <EditText
-                android:id="@+id/a_create_book_edt_author"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:inputType="textPersonName"
-                android:hint="Author"
-                android:importantForAutofill="no"
-                 />
+                android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/a_create_book_edt_title"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:inputType="textPersonName"
-                android:hint="Title" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/a_create_book_edt_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Author"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/a_create_book_edt_date"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:inputType="date"
-                android:hint="Date" />
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/a_create_book_edt_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Title"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/a_create_book_edt_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Date"
+                    android:inputType="date" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/a_create_book_btn_save"
-                android:layout_width="match_parent"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Save" />

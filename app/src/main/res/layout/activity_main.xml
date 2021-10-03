@@ -17,14 +17,17 @@
         tools:listitem="@layout/row_book"
         tools:itemCount="3"/>
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/a_main_btn_create_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_baseline_add_24"
         android:text="@string/create_book"
+        android:tint="?android:attr/colorForegroundInverse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:contentDescription="Button to add a book" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
