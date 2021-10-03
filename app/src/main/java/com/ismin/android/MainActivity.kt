@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
@@ -43,5 +45,25 @@ class MainActivity : AppCompatActivity() {
         val rcvBooks = findViewById<RecyclerView>(R.id.a_main_rcv_books)
         rcvBooks.layoutManager = LinearLayoutManager(this)
         rcvBooks.adapter = adapter
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.main_menu_delete -> {
+                bookshelf.clear()
+                adapter.refreshData(bookshelf.getAllBooks())
+                adapter.notifyDataSetChanged();
+                true
+            }
+            // If we got here, the user's action was not recognized.
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

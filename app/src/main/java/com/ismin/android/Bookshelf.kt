@@ -28,4 +28,8 @@ class Bookshelf {
         return storage.size;
     }
 
+    fun clear() {
+        storage.clear()
+    }
+
 }
